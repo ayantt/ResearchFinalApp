@@ -113,7 +113,10 @@ class FaceGraphic extends GraphicOverlay.Graphic {
                     Math.round(face.getHeight() * 2), false);
             rotatedBitmap = Bitmap.createBitmap(maskBitmapGraphicScaled,0,0,
                     maskBitmapGraphicScaled.getWidth(),maskBitmapGraphicScaled.getHeight(),rotateMatrix,true);
-            canvas.drawBitmap(rotatedBitmap, leftMask, topMask, null);
+            float rotatedOffsetX = rotatedBitmap.getWidth()-maskBitmapGraphicScaled.getWidth();
+            float rotatedOffsetY = rotatedBitmap.getHeight()-maskBitmapGraphicScaled.getHeight();
+
+                canvas.drawBitmap(rotatedBitmap, leftMask-rotatedOffsetX, topMask, null);
             Log.d("R",maskBitmapGraphicScaled.getHeight()+"x"+maskBitmapGraphicScaled.getWidth()
                     +", "+rotatedBitmap.getHeight()+"x"+rotatedBitmap.getWidth());
             Log.d("R", String.valueOf(rotationZ));
